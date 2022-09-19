@@ -2,6 +2,8 @@ import * as React from "react";
 import { Button, Box, Typography, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import axios from "axios";
+import { useState } from "react";
+import Loading from "../../components/Loading";
 
 const style = {
   position: "absolute",
@@ -14,9 +16,10 @@ const style = {
 };
 
 const AddCrud = ({ handleClose, open }) => {
-
+  const [isLoading, setIsLoading] = useState(false);
   const submitHandler = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     console.log(e.target.name.value);
     console.log(e.target.status.value);
     axios
@@ -28,7 +31,8 @@ const AddCrud = ({ handleClose, open }) => {
         console.log(res);
         if (res.status === 200) {
           console.log("amjilltai");
-            location.reload();
+          setIsLoading(false);
+          location.reload();
         }
       })
       .catch((error) => {
@@ -36,7 +40,9 @@ const AddCrud = ({ handleClose, open }) => {
       });
   };
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div>
       <Modal
         open={open}
