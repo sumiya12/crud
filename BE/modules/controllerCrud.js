@@ -11,7 +11,7 @@ const getall = async (req, res) => {
 const getById = async (req, res) => {
   try {
     const crud = await service.getBy(req);
-    res.json({ data: crud, success: "Succesfull", message: "Succesfull" });
+    res.status(200).json({ data: crud, success: "Succesfull", message: "Succesfull" });
   } catch (error) {
     res.json({ data: error });
   }
@@ -20,7 +20,7 @@ const getById = async (req, res) => {
 const createCrud = async (req, res) => {
   try {
     const crud = await service.create(req);
-    res.json({ data: crud, success: "Succesfull", message: "Succesfull" });
+    res.status(200).json({ data: crud, success: "Succesfull", message: "Succesfull" });
   } catch (error) {
     res.json({ data: error });
   }
@@ -38,7 +38,7 @@ const update = async (req, res) => {
 const deletes = async (req, res) => {
   try {
     const crud = await service.deletes(req);
-    res.json({ data: crud, success: "Succesfull", message: "Succesfull" });
+    res.status(200).json({ data: crud, success: "Succesfull", message: "Succesfull" });
   } catch (error) {
     res.json({ data: error });
   }
