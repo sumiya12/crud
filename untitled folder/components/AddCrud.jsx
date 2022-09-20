@@ -3,7 +3,7 @@ import { Button, Box, Typography, TextField } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import axios from "axios";
 import { useState } from "react";
-import Loading from "../../components/Loading";
+import Loading from "./Loading";
 
 const style = {
   position: "absolute",
@@ -20,8 +20,6 @@ const AddCrud = ({ handleClose, open }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log(e.target.name.value);
-    console.log(e.target.status.value);
     axios
       .post("http://localhost:3000/crud/create", {
         name: e.target.name.value,
